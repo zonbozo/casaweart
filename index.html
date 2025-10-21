@@ -73,7 +73,8 @@
           <div class="caption header-text">
             <h6>مهرجان</h6>
             <h2>مواهب الدار البيضاء للثقافة والفنون المحلية</h2>
-          <p dir="rtl">مهرجان مواهب الدار البيضاء للثقافة والفنون المحلية هو عبارة عن مسابقات في عدة مجالات فنية لفائدة الموهوبين من أبناء مدينة الدار البيضاء، تتراوح أعمارهم بين 14 و45 سنة. يهدف هذا المهرجان إلى تحقيق إشعاع وتنشيط ثقافي وفني، وإلى تشجيع كافة الطاقات الشابة في المدينة على إبراز مواهبها وإبداعاتها الفنية</p>
+          <p dir="rtl">مهرجان مواهب الدار البيضاء للثقافة والفنون المحلية هو عبارة عن مسابقات رسمية وموازية في عدة فنون لفائدة الموهوبين من أبناء مدينة الدار البيضاء.
+الذين تتراوح أعمارهم ما بين 18 سنة فما فوق بالنسبة للمسابقة الرسمية و الجامعية، و ما بين 6 سنوات كاملة كحد أدنى و 17 سنة كاملة كحد أقصى بالنسبة للمشاركين في المسابقة المدرسية التي ستنظم داخل المؤسسات التعليمية. ويهدف هذا المهرجان إلى تحقيق إشعاع وتنشيط ثقافي وفني وإلى تشجيع كافة الطاقات الشابة بالمدينة على إبراز مواهبها وإبداعاتها الفنية</p>
 			
 			<div class="main-button">
 				<a target="_blank" href="النظام الداخلي.pdf">النظام ا لداخلي للمهرجان</a>
@@ -115,18 +116,21 @@
                 </div>
             </div>
 
-            <div class="col-lg col-sm-6 col-xs-12">
-                <div class="item"  >
-                    <h4 style="text-align: center;">التصوير الفوتوغرافي، الفن الرقمي وتصميم الأشياء</h4>
-                    <div class="thumb">
-                        <img src="assets/images/cat6.jpg" alt="صورة التصوير الفوتوغرافي والفن الرقمي">
-                    </div>
-                </div>
-            </div>
+          <div class="col-lg col-sm-6 col-xs-12">
+    <div class="item">
+        <h4 style="text-align: center; white-space: nowrap;">
+           ،التصوير الفوتوغرافي<br> ،الفن الرقمي<br> وتصميم الأشياء
+        </h4>
+        <div class="thumb">
+            <img src="assets/images/cat6.jpg" alt="صورة التصوير الفوتوغرافي والفن الرقمي">
+        </div>
+    </div>
+</div>
+
 
             <div class="col-lg col-sm-6 col-xs-12">
                 <div class="item">
-                    <h4 style="text-align: center;">الرسم، النحت، الخزف الفني، فن الحروفية، الحفر الفني</h4>
+                    <h4 style="text-align: center;" > ،الرسم، النحت <br> ،الخزف الفني <br> ،فن الحروفية<br> الحفر الفني</h4>
                     <div class="thumb">
                         <img src="assets/images/cat2.png" alt="صورة الرسم والنحت">
                     </div>
@@ -135,7 +139,8 @@
 
             <div class="col-lg col-sm-6 col-xs-12">
                 <div class="item">
-                    <h4 style="text-align: center;">الفيلم القصير - الفيلم الوثائقي</h4>
+                  <h4 style="text-align: center;" >  ،الفيلم القصير<br> الفيلم الوثائقي</h4>
+
                     <div class="thumb">
                         <img src="assets/images/cat3.png" alt="صورة الفيلم القصير والوثائقي">
                     </div>
@@ -191,17 +196,19 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    align-items: center; 
-    height: 100%; 
-    
-    background-color: var(--card-bg-color);
-    border-radius: var(--border-radius);
-    box-shadow: var(--shadow-light);
+    align-items: center;
+    height: 100%;
+
+    background-color: var(--card-bg-color); /* Fond de la carte */
+    border-radius: var(--border-radius);   /* Coins arrondis */
+    box-shadow: var(--shadow-light);       /* Shadow léger */
     padding: 30px 20px;
     text-align: center;
+
+    /* Bordure mixée bleu */
+    border: 2px solid rgba(0, 51, 204, 0.5); /* #0033CC semi-transparent */
     
-    transition: all var(--transition-speed) ease-out; /* تطبيق الانتقال على كل الخصائص */
-    border: 1px solid transparent; 
+    transition: all var(--transition-speed) ease-out;
 }
 
 
@@ -267,6 +274,49 @@
         height: 100px;
     }
 }
+/* Hypothèse : le conteneur des cartes s'appelle '.cards-container' */
+.cards-container {
+    display: flex;
+    flex-wrap: wrap; /* Permet le retour à la ligne */
+    justify-content: space-around;
+}
+
+@media (max-width: 576px) { /* Pour les téléphones */
+    .cards-container > div { /* Cible les colonnes/conteneurs directs */
+        width: 90%; /* Prend presque toute la largeur pour une seule carte par ligne */
+        margin-bottom: 20px;
+    }
+}
+/* --- Amélioration de la réactivité pour le texte ET LA DISPOSITION --- */
+@media (max-width: 768px) {
+    
+    .categories-section {
+        padding: 10px 0 40px 0;
+    }
+    .section-heading h2 {
+        font-size: 2rem;
+    }
+
+    /* ➡️ CORRECTION CLÉ POUR LA CARTE ET LE DÉBORDEMENT */
+    .item {
+        padding: 25px 15px; /* Padding interne légèrement réduit */
+        min-height: 200px; /* Assure une hauteur minimale */
+        height: auto !important; /* Permet à la carte de s'étirer si besoin */
+    }
+
+    /* ➡️ CORRECTION CLÉ POUR LE TITRE TRONQUÉ */
+    .item h4 {
+        font-size: 1.15rem; /* Réduction du titre pour gagner de l'espace */
+        margin-top: 10px;
+        margin-bottom: 15px;
+        min-height: unset; /* TRÈS IMPORTANT : Retire la contrainte de hauteur */
+    }
+
+    .thumb img {
+        width: 100px; 
+        height: 100px;
+    }
+}
 </style>
 
 <footer>
@@ -283,6 +333,61 @@
       </p>
     </div>
   </div>
+  <style>
+    /* --- Styles de base et pour toutes les tailles (Isolé) --- */
+footer {
+    background-color: #343a40; 
+    color: #ffffff;
+    padding: 30px 0;
+    text-align: center;
+    font-family: 'Arial', sans-serif;
+    direction: rtl;
+}
+
+/* ➡️ Utiliser le sélecteur 'footer' pour isoler le style du conteneur */
+footer .container {
+    width: 90%; 
+    margin: 0 auto;
+    max-width: 1140px;
+}
+
+/* ➡️ Isoler les paragraphes du pied de page */
+footer p {
+    font-size: 0.9rem;
+    line-height: 1.9;
+    margin-bottom: 15px;
+}
+
+/* ➡️ Isoler les liens du pied de page */
+footer a {
+    color: #f0c242;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+footer a:hover {
+    color: #ffffff;
+    text-decoration: underline;
+}
+
+/* --- OPTIMISATION SPÉCIFIQUE MOBILE (Isolé) --- */
+@media (max-width: 768px) {
+    
+    footer {
+        padding: 20px 0;
+    }
+
+    footer p {
+        font-size: 0.80rem; 
+        padding: 0 10px;
+        
+    }
+/* .p :hover{
+          font-size: 0.80rem; 
+
+} */
+}
+  </style>
 </footer>
 
 
