@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مهرجان مواهب الدار البيضاء للثقافة والفنون المحلية</title>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            direction: rtl;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .header p {
+            font-size: 18px;
+            opacity: 0.95;
+        }
+
+        .form-content {
+            padding: 40px;
+        }
+
+        .alert {
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: bold;
+            display: none;
+        }
+
+        .alert-success {
+            background: #d4edda;
+            border: 2px solid #28a745;
+            color: #155724;
+        }
+
+        .alert-error {
+            background: #f8d7da;
+            border: 2px solid #dc3545;
+            color: #721c24;
+        }
+
+        .alert-info {
+            background: #d1ecf1;
+            border: 2px solid #0c5460;
+            color: #0c5460;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 600;
+            font-size: 15px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="date"] {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 15px;
+            transition: all 0.3s;
+            direction: rtl;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="tel"]:focus,
+        input[type="date"]:focus {
+            border-color: #667eea;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .categories {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+        }
+
+        .categories h3 {
+            margin-bottom: 15px;
+            color: #667eea;
+            font-size: 18px;
+        }
+
+        .category-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+            padding: 10px;
+            background: white;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .category-item:hover {
+            background: #f0f4ff;
+        }
+
+        .category-item input[type="radio"] {
+            margin-left: 10px;
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+
+        .category-item label {
+            margin: 0;
+            cursor: pointer;
+            flex: 1;
+            font-weight: 500;
+        }
+
+        .file-upload {
+            border: 2px dashed #667eea;
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            background: #f8f9ff;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .file-upload:hover {
+            background: #f0f4ff;
+            border-color: #764ba2;
+        }
+
+        .file-upload input[type="file"] {
+            display: none;
+        }
+
+        .file-upload-label {
+            cursor: pointer;
+            display: block;
+        }
+
+        .file-icon {
+            font-size: 48px;
+            margin-bottom: 10px;
+        }
+
+        .file-name {
+            margin-top: 15px;
+            color: #667eea;
+            font-weight: 600;
+        }
+
+        .terms {
+            background: #fff9e6;
+            border: 2px solid #ffd93d;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 25px 0;
+        }
+
+        .terms-checkbox {
+            display: flex;
+            align-items: start;
+            gap: 12px;
+        }
+
+        .terms-checkbox input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            margin-top: 3px;
+            cursor: pointer;
+        }
+
+        .terms-checkbox label {
+            flex: 1;
+            line-height: 1.6;
+            cursor: pointer;
+            font-weight: 500;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 20px;
+        }
+
+        .submit-btn:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        .submit-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .website {
+            text-align: center;
+            padding: 20px;
+            background: #f8f9fa;
+            color: #667eea;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .setup-instructions {
+            background: #fff3cd;
+            border: 2px solid #ffc107;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .setup-instructions h3 {
+            color: #856404;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .setup-instructions ol {
+            margin-right: 20px;
+            line-height: 1.8;
+            color: #856404;
+        }
+
+        .setup-instructions a {
+            color: #667eea;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .setup-instructions a:hover {
+            text-decoration: underline;
+        }
+
+        .setup-instructions code {
+            background: #f8f9fa;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: monospace;
+            color: #dc3545;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>مهرجان مواهب الدار البيضاء</h1>
+            <p>للثقافة والفنون المحلية - الدورة الثانية 2025</p>
+        </div>
+
+        <div class="form-content">
+            <!-- Instructions de configuration -->
+            <div class="setup-instructions" id="setupInstructions">
+                <h3>⚙️ تكوين EmailJS (مرة واحدة فقط)</h3>
+                <ol>
+                    <li>اذهب إلى: <a href="https://www.emailjs.com" target="_blank">www.emailjs.com</a></li>
+                    <li>قم بإنشاء حساب مجاني</li>
+                    <li>أضف خدمة البريد الإلكتروني (Gmail: <code>abk.hsn999@gmail.com</code>)</li>
+                    <li>أنشئ قالب بريد إلكتروني</li>
+                    <li>انسخ: <code>Service ID</code> و <code>Template ID</code> و <code>Public Key</code></li>
+                    <li>الصقهم في الكود أدناه (سطر 300-302)</li>
+                </ol>
+            </div>
+
+            <!-- Alertes -->
+            <div class="alert alert-success" id="successAlert">
+                ✅ تم إرسال طلب المشاركة بنجاح إلى abk.hsn999@gmail.com
+            </div>
+
+            <div class="alert alert-error" id="errorAlert">
+                ❌ حدث خطأ في الإرسال. يرجى التحقق من إعدادات EmailJS
+            </div>
+
+            <form id="registrationForm">
+                <div class="form-group">
+                    <label>اسم المجموعة الفنية (المسرح):</label>
+                    <input type="text" name="group_name" id="groupName" required>
+                </div>
+
+                <div class="form-group">
+                    <label>رقم بطاقة التعريف الوطنية:</label>
+                    <input type="text" name="id_number" id="idNumber" required>
+                </div>
+
+                <div class="form-group">
+                    <label>تاريخ الازدياد:</label>
+                    <input type="date" name="birth_date" id="birthDate" required>
+                </div>
+
+                <div class="form-group">
+                    <label>العنوان:</label>
+                    <input type="text" name="address" id="address" required>
+                </div>
+
+                <div class="form-group">
+                    <label>الهاتف:</label>
+                    <input type="tel" name="phone" id="phone" required>
+                </div>
+
+                <div class="form-group">
+                    <label>البريد الإلكتروني:</label>
+                    <input type="email" name="email" id="email" required>
+                </div>
+
+                <div class="form-group">
+                    <label>المقاطعة الجماعية:</label>
+                    <input type="text" name="district" id="district" required>
+                </div>
+
+                <div class="categories">
+                    <h3>الصنف الفني للمشاركة (اختر واحد فقط):</h3>
+                    
+                    <div class="category-item">
+                        <input type="radio" name="category" value="المسرح الجماعي" id="cat1" required>
+                        <label for="cat1">المسرح الجماعي</label>
+                    </div>
+
+                    <div class="category-item">
+                        <input type="radio" name="category" value="العزف والغناء الفردي" id="cat2">
+                        <label for="cat2">العزف / الغناء (الفردي)</label>
+                    </div>
+
+                    <div class="category-item">
+                        <input type="radio" name="category" value="التصوير والفني الرقمي" id="cat3">
+                        <label for="cat3">التصوير الفوتوغرافي، الفني الرقمي وتصميم الأشياء</label>
+                    </div>
+
+                    <div class="category-item">
+                        <input type="radio" name="category" value="الرسم والنحت" id="cat4">
+                        <label for="cat4">الرسم، النحت، الخزف الفني، فن الحروفية، الحفر الفني</label>
+                    </div>
+
+                    <div class="category-item">
+                        <input type="radio" name="category" value="الفيلم القصير" id="cat5">
+                        <label for="cat5">الفيلم القصير - الفيلم الوثائقي</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>إرفاق صورة أو ملف (اختياري):</label>
+                    <div class="file-upload" onclick="document.getElementById('fileInput').click()">
+                        <label for="fileInput" class="file-upload-label">
+                            <div class="file-icon">📎</div>
+                            <div>اضغط لاختيار ملف</div>
+                            <small style="color: #666;">الصور، PDF، أو مستندات أخرى</small>
+                            <div class="file-name" id="fileName"></div>
+                        </label>
+                        <input type="file" id="fileInput" name="attachment" accept="image/*,.pdf,.doc,.docx">
+                    </div>
+                </div>
+
+                <div class="terms">
+                    <div class="terms-checkbox">
+                        <input type="checkbox" id="termsAccept" required>
+                        <label for="termsAccept">
+                            أشهد وأؤكد بأنني اطلعت على النظام الداخلي لمهرجان مواهب الدار البيضاء للثقافة والفنون المحلية في دورته الثانية لسنة 2025، وأيضاً ألتزم على القواعد المنظمة لكافة المسابقات بالمشاركة، وأنا أتحمل كامل المسؤولية في حالة المخالفة، وذلك باحترام إدارة المهرجان وكافة اللجان التابعة له.
+                        </label>
+                    </div>
+                </div>
+
+                <button type="submit" class="submit-btn" id="submitBtn">
+                    إرسال طلب المشاركة
+                </button>
+            </form>
+        </div>
+
+        <div class="website">
+            www.casaweart.ma
+        </div>
+    </div>
+
+    <script>
+        // ⚠️ IMPORTANT: Remplacez ces valeurs par vos propres clés EmailJS
+        const EMAILJS_SERVICE_ID = 'YOUR_SERVICE_ID';      // Exemple: 'service_abc123'
+        const EMAILJS_TEMPLATE_ID = 'YOUR_TEMPLATE_ID';    // Exemple: 'template_xyz789'
+        const EMAILJS_PUBLIC_KEY = 'YOUR_PUBLIC_KEY';      // Exemple: 'user_ABC123XYZ'
+
+        // Initialiser EmailJS
+        emailjs.init(EMAILJS_PUBLIC_KEY);
+
+        const form = document.getElementById('registrationForm');
+        const fileInput = document.getElementById('fileInput');
+        const fileName = document.getElementById('fileName');
+        const submitBtn = document.getElementById('submitBtn');
+        const successAlert = document.getElementById('successAlert');
+        const errorAlert = document.getElementById('errorAlert');
+        const setupInstructions = document.getElementById('setupInstructions');
+
+        let fileData = null;
+
+        // Afficher le nom du fichier sélectionné
+        fileInput.addEventListener('change', function(e) {
+            if (this.files && this.files[0]) {
+                const file = this.files[0];
+                fileName.textContent = '✓ ' + file.name;
+                
+                // Convertir le fichier en base64 pour l'envoyer par email
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    fileData = {
+                        name: file.name,
+                        data: event.target.result
+                    };
+                };
+                reader.readAsDataURL(file);
+            } else {
+                fileName.textContent = '';
+                fileData = null;
+            }
+        });
+
+        // Gestion de la soumission du formulaire
+        form.addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            // Cacher les alertes précédentes
+            successAlert.style.display = 'none';
+            errorAlert.style.display = 'none';
+
+            // Vérifier la configuration EmailJS
+            if (EMAILJS_SERVICE_ID === 'service_es7yh5y' || 
+                EMAILJS_TEMPLATE_ID === 'template_4jb7y0j' || 
+                EMAILJS_PUBLIC_KEY === 'c2q4faPS47O1NwHwH') {
+                
+                errorAlert.innerHTML = '❌ يرجى تكوين EmailJS أولاً! انظر التعليمات أعلاه 👆';
+                errorAlert.style.display = 'block';
+                setupInstructions.style.display = 'block';
+                errorAlert.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                return;
+            }
+
+            // Désactiver le bouton pendant l'envoi
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'جاري الإرسال... ⏳';
+
+            // Préparer les données du formulaire
+            const templateParams = {
+                to_email: 'abk.hsn999@gmail.com',
+                group_name: document.getElementById('groupName').value,
+                id_number: document.getElementById('idNumber').value,
+                birth_date: document.getElementById('birthDate').value,
+                address: document.getElementById('address').value,
+                phone: document.getElementById('phone').value,
+                email: document.getElementById('email').value,
+                district: document.getElementById('district').value,
+                category: document.querySelector('input[name="category"]:checked').value,
+                attachment_name: fileData ? fileData.name : 'لا يوجد مرفق',
+                submission_date: new Date().toLocaleString('ar-MA')
+            };
+
+            try {
+                // Envoyer l'email via EmailJS
+                const response = await emailjs.send(
+                    EMAILJS_SERVICE_ID,
+                    EMAILJS_TEMPLATE_ID,
+                    templateParams
+                );
+
+                console.log('Email envoyé avec succès!', response);
+                
+                // Afficher le message de succès
+                successAlert.style.display = 'block';
+                successAlert.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                
+                // Cacher les instructions de configuration
+                setupInstructions.style.display = 'none';
+                
+                // Réinitialiser le formulaire
+                form.reset();
+                fileName.textContent = '';
+                fileData = null;
+
+                // Cacher le message après 5 secondes
+                setTimeout(() => {
+                    successAlert.style.display = 'none';
+                }, 5000);
+
+            } catch (error) {
+                console.error('Erreur lors de l\'envoi:', error);
+                
+                errorAlert.innerHTML = '❌ حدث خطأ في الإرسال: ' + error.text || error.message;
+                errorAlert.style.display = 'block';
+                errorAlert.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+
+            // Réactiver le bouton
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'إرسال طلب المشاركة';
+        });
+
+        // Validation en temps réel
+        const inputs = form.querySelectorAll('input[required]');
+        inputs.forEach(input => {
+            input.addEventListener('input', function() {
+                if (this.checkValidity()) {
+                    this.style.borderColor = '#28a745';
+                } else {
+                    this.style.borderColor = '#e0e0e0';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

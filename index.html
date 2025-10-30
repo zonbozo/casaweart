@@ -77,8 +77,8 @@
 الذين تتراوح أعمارهم ما بين 18 سنة فما فوق بالنسبة للمسابقة الرسمية و الجامعية، و ما بين 6 سنوات كاملة كحد أدنى و 17 سنة كاملة كحد أقصى بالنسبة للمشاركين في المسابقة المدرسية التي ستنظم داخل المؤسسات التعليمية. ويهدف هذا المهرجان إلى تحقيق إشعاع وتنشيط ثقافي وفني وإلى تشجيع كافة الطاقات الشابة بالمدينة على إبراز مواهبها وإبداعاتها الفنية</p>
 			
 			<div class="main-button">
-				<a target="_blank" href="النظام الداخلي للمهرجان.pdf">النظام ا لداخلي للمهرجان</a>
-				<a target="_blank" href="طلب المشار كة.pdf">طلب والتزام المشاركة</a>
+				<a target="_blank" href="reglement.pdf">النظام ا لداخلي للمهرجان</a>
+				<a target="_blank" href="formulaire dinscription.pdf">طلب والتزام المشاركة</a>
 
 			</div>
 
@@ -152,25 +152,24 @@
 
 </div>
 <style>
-    /* --- Variables pour un style cohérent --- */
+    
 :root {
-    --main-bg-color: #f8f9fa; /* Arrière-plan de la section */
-    --card-bg-color: #ffffff; /* Fond des cartes */
-    --primary-color: #4CAF50; /* Couleur principale (Utilisée pour la ligne sous le titre de section) */
-    --hover-color: #FF5733; /* NOUVEAU: لون التفاعل عند التمرير */
-    --text-color: #343a40; /* Couleur par défaut */
-    --title-color: #0033CC; /* لون العنوان */
-    --border-radius: 15px; /* حواف مستديرة */
-    --shadow-light: 0 4px 15px rgba(0, 0, 0, 0.08); /* ظل خفيف */
-    --shadow-hover: 0 8px 25px rgba(0, 0, 0, 0.15); /* NOUVEAU: ظل أعمق عند التمرير */
-    --image-circle-border-color: #f0c242; /* لون حافة الصورة الدائرية */
+    --main-bg-color: #f8f9fa; 
+    --card-bg-color: #ffffff; 
+    --primary-color: #4CAF50; 
+    --hover-color: #FF5733; 
+    --text-color: #343a40; 
+    --title-color: #0033CC; 
+    --border-radius: 15px; 
+    --shadow-light: 0 4px 15px rgba(0, 0, 0, 0.08); 
+    --shadow-hover: 0 8px 25px rgba(0, 0, 0, 0.15); 
+    --image-circle-border-color: #f0c242; 
     --transition-speed: 0.4s;
 }
 
 
-/* MODIFICATION CLÉ : Réduction du padding-top pour supprimer l'espace en haut */
 .categories-section {
-    padding: 20px 0 50px 0; /* Padding-top réduit à 20px, Padding-bottom à 50px */
+    padding: 20px 0 50px 0; 
 }
 
 .section-heading h2 {
@@ -191,7 +190,7 @@
     border-radius: 2px;
 }
 
-/* --- Style de la carte --- */
+
 .item {
     display: flex;
     flex-direction: column;
@@ -199,23 +198,23 @@
     align-items: center;
     height: 100%;
 
-    background-color: var(--card-bg-color); /* Fond de la carte */
-    border-radius: var(--border-radius);   /* Coins arrondis */
-    box-shadow: var(--shadow-light);       /* Shadow léger */
+    background-color: var(--card-bg-color); 
+    border-radius: var(--border-radius);   
+    box-shadow: var(--shadow-light);       
     padding: 30px 20px;
     text-align: center;
 
-    /* Bordure mixée bleu */
-    border: 2px solid rgba(0, 51, 204, 0.5); /* #0033CC semi-transparent */
+    
+    border: 2px solid rgba(0, 51, 204, 0.5); 
     
     transition: all var(--transition-speed) ease-out;
 }
 
 
 
-/* --- Titre de la carte --- */
+
 .item h4 {
-    font-size: 1.35rem; /* تم تكبير الخط قليلاً */
+    font-size: 1.35rem; 
     font-weight: 600;
     color: var(--title-color); 
     margin-top: 15px;
@@ -228,19 +227,18 @@
     transition: color var(--transition-speed) ease-out; 
 }
 
-/* NOUVEAU : تغيير لون العنوان عند التمرير */
 
 
-/* --- Conteneur de l'image --- */
+
 .thumb {
     width: 100%;
     margin-top: auto; 
     overflow: hidden; 
 }
 
-/* --- Image - التعديل الأساسي لزيادة الحجم --- */
+
 .thumb img {
-    /* التعديل الأساسي: زيادة حجم الصورة من 100px إلى 120px */
+    
     width: 120px;
     height: 120px;
     object-fit: cover; 
@@ -249,13 +247,13 @@
     padding: 5px;
     display: block; 
     margin: 0 auto; 
-    transition: transform var(--transition-speed) ease-out; /* NOUVEAU: لتطبيق تأثير التكبير */
+    transition: transform var(--transition-speed) ease-out; 
 }
 
 
 
 
-/* --- Amélioration de la réactivité pour le texte --- */
+
 @media (max-width: 992px) {
     .item h4 {
         font-size: 1.2rem;
@@ -269,25 +267,25 @@
         font-size: 2rem;
     }
     .thumb img {
-        /* للحفاظ على مظهر متناسق في الشاشات الصغيرة */
+        
         width: 100px; 
         height: 100px;
     }
 }
-/* Hypothèse : le conteneur des cartes s'appelle '.cards-container' */
+
 .cards-container {
     display: flex;
-    flex-wrap: wrap; /* Permet le retour à la ligne */
+    flex-wrap: wrap; 
     justify-content: space-around;
 }
 
-@media (max-width: 576px) { /* Pour les téléphones */
-    .cards-container > div { /* Cible les colonnes/conteneurs directs */
-        width: 90%; /* Prend presque toute la largeur pour une seule carte par ligne */
+@media (max-width: 576px) { 
+    .cards-container > div { 
+        width: 90%; 
         margin-bottom: 20px;
     }
 }
-/* --- Amélioration de la réactivité pour le texte ET LA DISPOSITION --- */
+
 @media (max-width: 768px) {
     
     .categories-section {
@@ -297,19 +295,19 @@
         font-size: 2rem;
     }
 
-    /* ➡️ CORRECTION CLÉ POUR LA CARTE ET LE DÉBORDEMENT */
+    
     .item {
-        padding: 25px 15px; /* Padding interne légèrement réduit */
-        min-height: 200px; /* Assure une hauteur minimale */
-        height: auto !important; /* Permet à la carte de s'étirer si besoin */
+        padding: 25px 15px; 
+        min-height: 200px; 
+        height: auto !important; 
     }
 
-    /* ➡️ CORRECTION CLÉ POUR LE TITRE TRONQUÉ */
+    
     .item h4 {
-        font-size: 1.15rem; /* Réduction du titre pour gagner de l'espace */
+        font-size: 1.15rem; 
         margin-top: 10px;
         margin-bottom: 15px;
-        min-height: unset; /* TRÈS IMPORTANT : Retire la contrainte de hauteur */
+        min-height: unset; 
     }
 
     .thumb img {
@@ -324,7 +322,7 @@
     <div class="col-lg-12">
       <p>
         تسحب ملفات التسجيل و تودع بالمركبات الثقافية أو بالمعهد الموسيقي للدار البيضاء
-        أو بدور الشباب، خلال الفترة الممتدة من 24 أكتوبر إلى 10 نونبر 2025
+        أو بدور الشباب، خلال الفترة الممتدة من 24 أكتوبر إلى 15 نونبر 2025
       </p>
       <p>
         للمزيد من المعلومات يرجى زيارة بوابة المهرجان 
@@ -334,7 +332,7 @@
     </div>
   </div>
   <style>
-    /* --- Styles de base et pour toutes les tailles (Isolé) --- */
+    
 footer {
     background-color: #343a40; 
     color: #ffffff;
@@ -344,21 +342,21 @@ footer {
     direction: rtl;
 }
 
-/* ➡️ Utiliser le sélecteur 'footer' pour isoler le style du conteneur */
+
 footer .container {
     width: 90%; 
     margin: 0 auto;
     max-width: 1140px;
 }
 
-/* ➡️ Isoler les paragraphes du pied de page */
+
 footer p {
     font-size: 0.9rem;
     line-height: 1.9;
     margin-bottom: 15px;
 }
 
-/* ➡️ Isoler les liens du pied de page */
+
 footer a {
     color: #f0c242;
     text-decoration: none;
@@ -370,7 +368,7 @@ footer a:hover {
     text-decoration: underline;
 }
 
-/* --- OPTIMISATION SPÉCIFIQUE MOBILE (Isolé) --- */
+
 @media (max-width: 768px) {
     
     footer {
@@ -382,10 +380,7 @@ footer a:hover {
         padding: 0 10px;
         
     }
-/* .p :hover{
-          font-size: 0.80rem; 
 
-} */
 }
   </style>
 </footer>
